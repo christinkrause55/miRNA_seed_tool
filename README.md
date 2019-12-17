@@ -1,5 +1,7 @@
 # miRNA Seed Tool
 
+This tool is still in development.
+
 ## Background
 
 MicroRNAs (miRNAs) are small 22 nt non-coding RNA molecules with diverse effects on gene expression and protein translation.
@@ -17,8 +19,8 @@ Input as java "miRNA Seq" "Seed position #" "mRNA sequence"
 like
 
 ````shell
-java miRNA_seed_tool "GCUUAGUGGCUUA" "2" "GTAAACAGATAGACCATTGACAGTAGCGTAGCAGTAGGACCAGTAGAGACAA"
+java LocateSeed "GCUUAGUGGCUUA" "2" "GTAAACAGATAGACCATTGACAGTAGCGTAGCAGTAGGACCAGTAGAGACAA"
 ````
 
-.
+. Needs to be compiled prior use. 
 
