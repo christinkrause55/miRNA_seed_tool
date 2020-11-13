@@ -1,9 +1,13 @@
 /**
  * Class to find a seed sequence of miRNA in a target mRNA object
  * @author christin
- * @version 0.2
+ * @version 1.0
  *
  */
+
+import java.io.*;
+import java.util.ArrayList;
+
 public class LocateSeed{
 	/**
 	 * 7mer-m8: A perfect WC match from nucleotides 2-8 of the miRNA seed.
@@ -110,7 +114,8 @@ public class LocateSeed{
 	 * Main method to start the programm
 	 * @param args
 	 */
-	public static void main (String[] args){
+	
+	public static void main (String[] args) throws Exception{
 		
 		// hsa-miR-182-5p
 		//MIRNA miRNA = new MIRNA("UUUGGCAAUGGUAGAACUCACACU",2);
@@ -125,21 +130,117 @@ public class LocateSeed{
 		// FOXO1
 		//MRNA target = new MRNA("TTTTTTCCTAGGTTACACTTAAAAGTACTTCAGATTGTCTGACAGCAGGAACTGAGAGAAGCAGTCCAAAGATGTCTTTCACCAACTCCCTTTTAGTTTTCTTGGTTAAAAAAAAAAACAAAAAAAAAAACCCTCCTTTTTTCCTTTCGTCAGACTTGGCAGCAAAGACATTTTTCCTGTACAGGATGTTTGCCCAATGTGTGCAGGTTATGTGCTGCTGTAGATAAGGACTGTGCCATTGGAAATTTCATTACAATGAAGTGCCAAACTCACTACACCATATAATTGCAGAAAAGATTTTCAGATCCTGGTGTGCTTTCAAGTTTTGTATATAAGCAGTAGATACAGATTGTATTTGTGTGTGTTTTTGGTTTTTCTAAATATCCAATTGGTCCAAGGAAAGTTTATACTCTTTTTGTAATACTGTGATGGGCCTCATGTCTTGATAAGTTAAACTTTTGTTTGTACTACCTGTTTTCTGCGGAACTGACGGATCACAAAGAACTGAATCTCCATTCTGCATCTCCATTGAACAGCCTTGGACCTGTTCACGTTGCCACAGAATTCACATGAGAACCAAGTAGCCTGTTATCAATCTGCTAAATTAATGGACTTGTTAAACTTTTGGAAAAAAAAAGATTAAATGCCAGCTTTGTACAGGTCTTTTCTATTTTTTTTTGTTTATTTTGTTATTTGCAAATTTGTACAAACATTTAAATGGTTCTAATTTCCAGATAAATGATTTTTGATGTTATTGTTGGGACTTAAGAACATTTTTGGAATAGATATTGAACTGTAATAATGTTTTCTTAAAACTAGAGTCTACTTTGTTACATAGTCAGCTTGTAAATTTTGTGGAACCACAGGTATTTGGGGCAGCATTCATAATTTTCATTTTGTATTCTAACTGGATTAGTACTAATTTTATACATGCTTAACTGGTTTGTACACTTTGGGATGCTACTTAGTGATGTTTCTGACTAATCTTAAATCATTGTAATTAGTACTTGCATATTCAACGTTTCAGGCCCTGGTTGGGCAGGAAAGTGATGTATAGTTATGGACACTTTGCGTTTCTTATTTAGGATAACTTAATATGTTTTTATGTATGTATTTTAAAGAAATTTCATCTGCTTCTACTGAACTATGCGTACTGCATAGCATCAAGTCTTCTCTAGAGACCTCTGTAGTCCTGGGAGGCCTCATAATGTTTGTAGATCAGAAAAGGGAGATCTGCATCTAAAGCAATGGTCCTTTGTCAAACGAGGGATTTTGATCCACTTCACCATTTTGAGTTGAGCTTTAGCAAAAGTTTCCCCTCATAATTCTTTGCTCTTGTTTCAGTCCAGGTGGAGGTTGGTTTTGTAGTTCTGCCTTGAGGAATTATGTCAACACTCATACTTCATCTCATTCTCCCTTCTGCCCTGCAGATTAGATTACTTAGCACACTGTGGAAGTTTAAGTGGAAGGAGGGAATTTAAAAATGGGACTTGAGTGGTTTGTAGAATTTGTGTTCATAAGTTCAGATGGGTAGCAAATGGAATAGAACTTACTTAAAAATTGGGGAGATTTATTTGAAAACCAGCTGTAAGTTGTGCATTGAGATTATGTTAAAAGCCTTGGCTTAAGAATTTGAAAATTTCTTTAGCCTGTAGCAACCTAAACTGTAATTCCTATCATTATGTTTTATTACTTTCCAATTACCTGTAACTGACAGACCAAATTAATTGGCTTTGTGTCCTATTTAGTCCATCAGTATTTTCAAGTCATGTGGAAAGCCCAAAGTCATCACAATGAAGAGAACAGGTGCACAGCACTGTTCCTCTTGTGTTCTTGAGAAGGATCTAATTTTTCTGTATATAGCCCACATCACACTTGCTTTGTCTTGTATGTTAATTGCATCTTCATTGGCTTGGTATTTCCTAAATGTTTAACAAGAACACAAGTGTTCCTGATAAGATTTCCTACAGTAAGCCAGCTCTATTGTAAGCTTCCCACTGTGATGATCATTTTTTTGAAGATTCATTGAACAGCCACCACTCTATCATCCTCATTTTGGGGCAGTCCAAGACATAGCTGGTTTTAGAAACCCAAGTTCCTCTAAGCACAGCCTCCCGGGTATGTAACTGAACTTGGTGCCAAAGTACTTGTGTACTAATTTCTATTACTACGTACTGTCACTTTCCTCCCGTGCCATTACTGCATCATAATACAAGGAACCTCAGAGCCCCCATTTGTTCATTAAAGAGGCAACTACAGCCAAAATCACTGTTAAAATCTTACTACTTCATGGAGTAGCTCTTAGGAAAATATATCTTCCTCCTGAGTCTGGGTAATTATACCTCTCCCAAGCCCCCATTGTGTGTTGAAATCCTGTCATGAATCCTTGGTAGCTCTCTGAGAACAGTGAAGTCCAGGGAAAGGCATCTGGTCTGTCTGGAAAGCAAACATTATGTGGCCTCTGGTAGTTTTTTTCCTGTAAGAATACTGACTTTCTGGAGTAATGAGTATATATCAGTTATTGTACATGATTGCTTTGTGAAATGTGCAAATGATATCACCTATGCAGCCTTGTTTGATTTATTTTCTCTGGTTTGTACTGTTATTAAAAGCATATTGTATTATAGAGCTATTCAGATATTTTAAATATAAAGATGTATTGTTTCCGTAATATAGACGTATGGAATATATTTAGGTAATAGATGTATTACTTGGAAAGTTCTGCTTTGACAAACTGACAAAGTCTAAATGAGCACATGTATCCCAGTGAGCAGTAAATCAATGGAACATCCCAAGAAGAGGATAAGGATGCTTAAAATGGAAATCATTCTCCAACGATATACAAATTGGACTTGTTCAACTGCTGGATATATGCTACCAATAACCCCAGCCCCAACTTAAAATTCTTACATTCAAGCTCCTAAGAGTTCTTAATTTATAACTAATTTTAAAAGAGAAGTTTCTTTTCTGGTTTTAGTTTGGGAATAATCATTCATTAAAAAAAATGTATTGTGGTTTATGCGAACAGACCAACCTGGCATTACAGTTGGCCTCTCCTTGAGGTGGGCACAGCCTGGCAGTGTGGCCAGGGGTGGCCATGTAAGTCCCATCAGGACGTAGTCATGCCTCCTGCATTTCGCTACCCGAGTTTAGTAACAGTGCAGATTCCACGTTCTTGTTCCGATACTCTGAGAAGTGCCTGATGTTGATGTACTTACAGACACAAGAACAATCTTTGCTATAATTGTATAAAGCCATAAATGTACATAAATTATGTTTAAATGGCTTGGTGTCTTTCTTTTCTAATTATGCAGAATAAGCTCTTTATTAGGAATTTTTTGTGAAGCTATTAAATACTTGAGTTAAGTCTTG");
 		
-		MIRNA miRNA = new MIRNA(args[0], Integer.parseInt(args[1]));
-		MRNA target = new MRNA(args[2]);
+		if(args[0].equals("help")) {
+			System.out.println(" ");
+			System.out.println("miRNA Seed Tool for in silico search for binding sites. \nAuthor Christin Krause @ University of Lübeck");
+			System.out.println(" ");
+			System.out.println("Options:");
+			System.out.println(" ");
+			System.out.println("single: miR-seq SeedStart mRNA");
+			System.out.println(" ");
+			System.out.println("mult_miR: miR-seq-file mRNA");
+			System.out.println("The file should have the form of: mature Sequence 'tab' name");
+			System.out.println(" ");
+			System.out.println("mult_mR: miR-seq mRNA-file");
+			System.out.println("The file should have the form of: name 'tab' 3'UTR Sequence");
+			System.out.println(" ");
+		}
 		
+		if(args[0].equals("single")) {
+			MIRNA miRNA = new MIRNA(args[1], Integer.parseInt(args[2]));
+			MRNA target = new MRNA(args[3]);
+			System.out.println(" ");
+			System.out.println("Seed Sequence of miRNA: " + miRNA.getSeq());
+			System.out.println(miRNA.getLength());
+			
+			System.out.println("- - - - - - - - - - - - - - -");
+			System.out.println("mRNA contains 8mer: " + is8mer(miRNA, target));
+			System.out.println("- - - - - - - - - - - - - - -");
+			System.out.println("mRNA contains 6mer: " + is6mer(miRNA, target));
+			System.out.println("- - - - - - - - - - - - - - -");
+			System.out.println("mRNA contains 7mer_m8: " + is7mer_m8(miRNA, target));
+			System.out.println("- - - - - - - - - - - - - - -");
+			System.out.println("mRNA contains 7mer_A1: " + is7mer_A1(miRNA, target));
+			System.out.println(" ");
+		}
 		
-		System.out.println("Seed Sequence of miRNA: " + miRNA.getSeq());
-		System.out.println(miRNA.getLength());
-		
-		System.out.println("- - - - - - - - - - - - - - -");
-		System.out.println("mRNA contains 8mer: " + is8mer(miRNA, target));
-		System.out.println("- - - - - - - - - - - - - - -");
-		System.out.println("mRNA contains 6mer: " + is6mer(miRNA, target));
-		System.out.println("- - - - - - - - - - - - - - -");
-		System.out.println("mRNA contains 7mer_m8: " + is7mer_m8(miRNA, target));
-		System.out.println("- - - - - - - - - - - - - - -");
-		System.out.println("mRNA contains 7mer_A1: " + is7mer_A1(miRNA, target));
+		if(args[0].equals("mult_miR")) {
+			
+			File file = new File(args[1]);
+			BufferedReader buffReader = new BufferedReader(new FileReader(file));
+			
+			String str;
+			ArrayList<String> divide = new ArrayList<String>();
+			ArrayList<String> name = new ArrayList<String>();
+			
+			while ((str = buffReader.readLine()) != null){
+				String[] temp = str.split("\t");
+				
+				divide.add(temp[0]);
+				name.add(temp[1]);
+			}
+			
+			MRNA target = new MRNA(args[2]);
+			
+			while(divide.size() != 0) {
+				MIRNA miRNA = new MIRNA(divide.get(0), 2);
+				
+					System.out.println(" ");
+					System.out.println("> Seed Sequence of miRNA " + name.get(0) +  ": " + miRNA.getSeq());
+					System.out.println(miRNA.getLength());
+					System.out.println("- - - - - - - - - - - - - - -");
+					System.out.println("mRNA contains 8mer: " + is8mer(miRNA, target));
+					System.out.println("- - - - - - - - - - - - - - -");
+					System.out.println("mRNA contains 6mer: " + is6mer(miRNA, target));
+					System.out.println("- - - - - - - - - - - - - - -");
+					System.out.println("mRNA contains 7mer_m8: " + is7mer_m8(miRNA, target));
+					System.out.println("- - - - - - - - - - - - - - -");
+					System.out.println("mRNA contains 7mer_A1: " + is7mer_A1(miRNA, target));
+					System.out.println(" ");
+				
+				divide.remove(0);
+				name.remove(0);
+			}
+		}
+			
+		if(args[0].equals("mult_mR")) {
+				
+			File file = new File(args[2]);
+			BufferedReader buffReader = new BufferedReader(new FileReader(file));
+				
+			String str;
+			ArrayList<String> divide = new ArrayList<String>();
+			ArrayList<String> name = new ArrayList<String>();
+				
+			while ((str = buffReader.readLine()) != null){
+				String[] temp = str.split("\t");
+					
+				divide.add(temp[1]);
+				name.add(temp[0]);
+			}
+				
+			MIRNA miRNA = new MIRNA(args[1], 2);
+				
+			while(divide.size() != 0) {
+					MRNA target = new MRNA(divide.get(0));
+					System.out.println(" ");
+					System.out.println("Seed Sequence of miRNA for target " + name.get(0) +  ": " + miRNA.getSeq());
+					System.out.println(miRNA.getLength());
+					System.out.println("- - - - - - - - - - - - - - -");
+					System.out.println("mRNA contains 8mer: " + is8mer(miRNA, target));
+					System.out.println("- - - - - - - - - - - - - - -");
+					System.out.println("mRNA contains 6mer: " + is6mer(miRNA, target));
+					System.out.println("- - - - - - - - - - - - - - -");
+					System.out.println("mRNA contains 7mer_m8: " + is7mer_m8(miRNA, target));
+					System.out.println("- - - - - - - - - - - - - - -");
+					System.out.println("mRNA contains 7mer_A1: " + is7mer_A1(miRNA, target));
+					System.out.println(" ");
+					
+					divide.remove(0);
+					name.remove(0);
+			}
+			
+		}
 		
 	}
 
