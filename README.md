@@ -21,6 +21,11 @@ like
 ````shell
 java LocateSeed "GCUUAGUGGCUUA" "2" "GTAAACAGATAGACCATTGACAGTAGCGTAGCAGTAGGACCAGTAGAGACAA"
 ````
+Enter 
+````shell
+java LocateSeed help
+````
+for a complete list of options and how to enter.
 
-. Needs to be compiled prior use. 
+Needs to be compiled prior use. 
 
